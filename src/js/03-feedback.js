@@ -12,7 +12,6 @@ object = {
     email: '',
     message: '',
 }
-console.log(object)
 
 function saveValue(event) {
 
@@ -31,9 +30,15 @@ if (parsedValue) {
 form.addEventListener('submit', onButtonClick)
 function onButtonClick(event) {
     event.preventDefault()
+    const formDataObj = {};
+    const formData = new FormData(form);
+    formData.forEach((value, key) => {
+        formDataObj[key] = value;
 
-    console.log(object)
-
+    });
+    console.log('Дані з форми:', formDataObj);
     form.reset();
     localStorage.removeItem("feedback-form-state")
 }
+
+
