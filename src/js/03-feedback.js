@@ -34,7 +34,6 @@ function onButtonClick(event) {
 
     console.log(object)
 
-    emailInput.value = '';
-    messageInput.value = '';
+    form.reset();
     localStorage.removeItem("feedback-form-state")
 }
