@@ -8,7 +8,7 @@ const button = document.querySelector('button')
 
 form.addEventListener('input', throttle(saveValue, 500));
 
-object = {
+const object = {
     email: '',
     message: '',
 }
