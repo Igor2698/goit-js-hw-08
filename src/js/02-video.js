@@ -14,4 +14,4 @@ function saveCurrentTime(data) {
 const currentTime = localStorage.getItem("videoplayer-current-time");
 
 
-player.setCurrentTime(currentTime);
+player.setCurrentTime(currentTime || 0);
