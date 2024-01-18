@@ -18,12 +18,13 @@ function onListClick(ev) {
     console.log(ev.target.dataset.source);
     const instance = basicLightbox.create(` < div class= "modal" >
     <img src="${ev.target.dataset.source}">
-       </div>`, { closable: false, })
+       </div>`)
     instance.show();
 
 
     function onKeyDown(event) {
         if (event.key === 'Escape') {
+            
             instance.close();
             document.removeEventListener('keydown', onKeyDown);
         }
