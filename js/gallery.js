@@ -65,7 +65,7 @@ const images = [
 ];
 
 const list = document.querySelector('.gallery');
-const markup = images.map(({ preview, original, description }) => `<li class ='gallery__item'><a href="${original}" class="gallery__item">
+const markup = images.map(({ preview, original, description }) => `<li class ='gallery__item'><a href="${original}" class="gallery__link">
 <img src="${preview}" alt="${description}" data-source="${original}" class="gallery__image"></a></li>`)
     .join('');
 list.innerHTML = markup;
