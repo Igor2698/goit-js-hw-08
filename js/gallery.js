@@ -63,14 +63,11 @@ const images = [
         description: "Lighthouse Coast Sea",
     },
 ];
-// Change code below this line
-const list = document.querySelector('.gallery')
-const markup = images.map(({ preview, original, description }) => `
-    <li class ='gallery__item'>
-        <a href="${original}" class="gallery__item">
-            <img src="${preview}" alt="${description}" data-source="${original}" class="gallery__image">
-        </a>
-    </li>`).join('');
+
+const list = document.querySelector('.gallery');
+const markup = images.map(({ preview, original, description }) => `<li class ='gallery__item'><a href="${original}" class="gallery__item">
+<img src="${preview}" alt="${description}" data-source="${original}" class="gallery__image"></a></li>`)
+    .join('');
 list.innerHTML = markup;
 list.addEventListener('click', onListClick);
 
@@ -78,23 +75,31 @@ function onListClick(ev) {
     ev.preventDefault();
     if (ev.target.nodeName !== 'IMG') {
         return
-    }
-    console.log(ev.target.dataset.source);
-    const instance = basicLightbox.create(` < div class= "modal" >
-    <img src="${ev.target.dataset.source}">
-       </div>`)
-    instance.show();
+    };
 
+    const instance = basicLightbox.create(`<div class= "modal"><img src="${ev.target.dataset.source}"></div>`,
+        {
+            onShow: (instance) => {
+                document.addEventListener('keydown', onKeyDown);
+
+            },
+            onClose: (instance) => {
+                document.removeEventListener('keydown', onKeyDown);
+            }
+        }
+    );
+
+    instance.show();
 
     function onKeyDown(event) {
         if (event.key === 'Escape') {
-
             instance.close();
-            document.removeEventListener('keydown', onKeyDown);
         }
     }
-
-    document.addEventListener('keydown', onKeyDown);
 }
+
+
+
+
 
 
