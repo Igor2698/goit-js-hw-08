@@ -77,7 +77,7 @@ function onListClick(ev) {
         return
     };
 
-    const instance = basicLightbox.create(`<div class= "modal"><img src="${ev.target.dataset.source}"></div>`,
+    const instance = basicLightbox.create(`<img src="${ev.target.dataset.source}">`,
         {
             onShow: (instance) => {
                 document.addEventListener('keydown', onKeyDown);
